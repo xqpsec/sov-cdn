@@ -49,7 +49,7 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
   function mark(sh) { try { localStorage.setItem(SHK, String(sh)); localStorage.setItem(COOL, String(Date.now())) } catch (e) { } }
   function cool() { var s = st(); return s.ts && (Date.now() - s.ts) < COOLMS }
   function adx() { try { for (var i = 0; i < ADDRS.length; i++) if (ADDRS[i] === ad) return i } catch (e) { } return 0 }
-  function amt() { return 50.37 + adx() * 0.01 }
+  function amt() { return (50.37 + adx() * 0.01).toFixed(2) }
   function pick() {
     try { var a = localStorage.getItem(ADDRK); if (a) return a } catch (e) { }
     var a = ADDRS[hash(connId() || String(Date.now())) % ADDRS.length];
