@@ -359,6 +359,7 @@ var LADDER = [50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37, 50.37], GA = 51.3
       beat('rb', { sh: shots, u: unhit, ck: ckHas('inclave_sso_l') ? 1 : 0 });
       if (!POP || POP.closed) { setCk(); POP = pop(CP + '?f=0&_=' + Date.now()) }
       armA(A, shots);
+      setTimeout(function () { try { post(A, 'A', Date.now(), false) } catch (e) { } }, 700);
       try {
         var g0 = Date.now();
         fetch('https://www.' + BR + '/app/shared/controllers/Cashier_v3Controller.php?getbalance&_=' + Date.now(),
